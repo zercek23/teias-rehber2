@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'teias-rehber';
+  title: string = 'Teiaş Rehber';
+
+  addItem(newItem: string) {
+    console.log('name:', newItem)
+  }
 }
