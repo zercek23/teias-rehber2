@@ -1,4 +1,4 @@
 <div style="padding: 20px;">
-  <app-table-filter></app-table-filter>  
-  <app-table></app-table>
+  <app-table-filter (buttonClicked)="getDataSourceWithQuery($event)"></app-table-filter>  
+  <app-table [dataSource]="dataSource"></app-table>
 </div>

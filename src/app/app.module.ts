@@ -20,6 +20,7 @@ import { UnlessDirective } from './directives/unless.directive';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatSelectModule} from '@angular/material/select'
 import {MatInputModule} from '@angular/material/input'
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatInputModule} from '@angular/material/input'
     FormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

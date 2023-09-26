@@ -1,57 +1,83 @@
 <mat-card class="filterContent">
   <mat-card-content>
-    <mat-grid-list cols="2" rowHeight="80px">
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <mat-label>Başkanlık Seçiniz</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let baskan of baskanlik" [value]="baskan.value">
-              {{baskan.text}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <mat-label>Müdürlük Seçiniz</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let mudur of mudurluk" [value]="mudur.value">
-              {{mudur.text}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-    <mat-grid-list cols="6" rowHeight="50px">
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <input matInput placeholder="Adınızı Giriniz">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <input matInput placeholder="Soyadınızı Giriniz">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <input matInput placeholder="Dahili">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <input matInput placeholder="Kat">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-form-field class="filterField">
-          <input matInput placeholder="Oda">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-raised-button style="background-color: #369A05; color: white; margin: 0px 10px">Ara</button>
-        <button mat-raised-button style="border: 1px solid #369A05">Temizle</button>
-      </mat-grid-tile>
-    </mat-grid-list>
+    {{ state | json }}
+      <mat-grid-list cols="2" rowHeight="80px">
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <mat-label>Başkanlık Seçiniz</mat-label>
+            <mat-select
+              name="baskan"
+              [(ngModel)]="state.baskan"
+              (ngModelChange)="onStateChanged($event)"
+            >
+              <mat-option
+                *ngFor="let baskan of baskanlik"
+                [value]="baskan.value"
+              >
+                {{ baskan.text }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <mat-label>Müdürlük Seçiniz</mat-label>
+            <mat-select name="mudur" [(ngModel)]="state.mudur">
+              <mat-option *ngFor="let mudur of mudurluk" [value]="mudur.value">
+                {{ mudur.text }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <mat-grid-list cols="6" rowHeight="50px">
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <input
+              matInput
+              name="ad"
+              [(ngModel)]="state.ad"
+              placeholder="Adınızı Giriniz"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <input
+              matInput
+              name="soyad"
+              [(ngModel)]="state.soyad"
+              placeholder="Soyadınızı Giriniz"
+            />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <input matInput name="dahili" [(ngModel)]="state.dahili" placeholder="Dahili" />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <input matInput name="kat" [(ngModel)]="state.kat" placeholder="Kat" />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="filterField">
+            <input matInput name="oda" [(ngModel)]="state.oda" placeholder="Oda" />
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button
+            (click)="onAraButtonClick()"
+            mat-raised-button
+            style="background-color: #369a05; color: white; margin: 0px 10px"
+          >
+            Ara
+          </button>
+          <button mat-raised-button style="border: 1px solid #369a05">
+            Temizle
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
   </mat-card-content>
 </mat-card>

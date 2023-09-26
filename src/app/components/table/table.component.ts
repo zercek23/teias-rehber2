@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {DATA} from '../../common/data';
+import { Component, Input } from '@angular/core';
+import { Kullanici } from '../../common/data';
 
 @Component({
   selector: 'app-table',
@@ -8,5 +8,10 @@ import {DATA} from '../../common/data';
 })
 export class TableComponent {
   displayedColumns: string[] = ['adi', 'soyad', 'baskanlikAdi', 'mudurlukadi', 'unvan', 'blok', 'kat', 'oda', 'dahili', 'hariciTelefon1', 'fax'];
-  dataSource = DATA;
+  @Input() dataSource: Kullanici[] = [];
+
+  constructor() { }
+
+  ngOnInit() {
+  }
 }
